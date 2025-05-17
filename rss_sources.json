@@ -1,0 +1,20 @@
+{
+    "중앙정부": [
+      "https://mss.go.kr/rss/smba/board/86.do",
+      "https://mss.go.kr/rss/smba/board/95.do",
+      "https://www.korea.kr/rss/policy.xml",
+      "https://www.korea.kr/rss/ebriefing.xml",
+      "https://www.korea.kr/rss/pressrelease.xml",
+      "https://kosis.kr/rss/notice_rss.jsp"
+    ],
+    "부산광역시": [
+      "https://rss.blog.naver.com/cooolbusan.xml", 
+      "https://www.busan.go.kr/nbtnewsBU.rss",
+      "https://www.busan.go.kr/news/ArticleRSS.do"
+    ],
+    "산하기관": [
+        "https://kosis.kr/rss/notice_rss.jsp",
+        "https://kosis.kr/rss/trend_rss.jsp",
+        "https://kosis.kr/rss/kosis_100_rss.jsp"
+    ]
+  }
