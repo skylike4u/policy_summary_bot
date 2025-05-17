@@ -12,12 +12,12 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # 2. 키워드 기반 필터링 설정 (2차 필터로만 사용)
 keywords = [
     "정책", "공모", "지원", "사업", "예산", "계획",
-    "청년", "산업", "R&D", "소상공인", "청년정책", "일자리",
-    "산업단지", "AI", "중소기업", "발표", "공개",
+    "청년", "산업", "R&D", "소상공인", "청년정책", "일자리", "기업",
+    "산업단지", "AI", "중소기업", "발표", "공개", "산단",
     "부산", "지자체", "지역", "행사", "포럼", "설명회",
     "박람회", "세미나", "간담회", "사회적경제",
     "복지", "주거", "돌봄", "의료", "탄소중립", "ESG",
-    "박형준", "시장"
+    "박형준", "시장", "기회", "미래", "혁신"
 ]
 
 # 3. rss_sources.json 파일에서 RSS 목록 불러오기
@@ -98,7 +98,7 @@ for group, urls in rss_urls_by_group.items():
 
 내용: {summary}
 
-### 🗂️ 기사 유형
+### ✨ 기사 유형
 (정책공고 / 공모전 / 설명회 / 통계동향 / 인터뷰 / 일반보도 / 기타 중 판단)
 
 ### 📌 핵심 요약 (2~3줄)
@@ -109,21 +109,22 @@ for group, urls in rss_urls_by_group.items():
 
 ### 🏢 발신기관 또는 주최기관 (있을 경우)
 
-### ☎️ 문의처 (있을 경우)
-
-※ Markdown 형식, 항목 누락 가능. 내용이 빈약하면 '해당 없음' 또는 생략해도 됨.
+### ☎️ 문의처 (있을 경우 삽입 / 없는 경우 생략)
+ 
+※ Markdown 형식, 항목 누락 가능. 내용이 빈약하면 '해당 없음' 또는 생략해도 됨. 
+※ "발신기관 또는 주최기관" 및 "문의처"에 내용이 없거나 확인이 어려운 경우에, "부산경제진흥원 정책조정팀" 임의로 넣지 말것
 """
 
                 response = client.chat.completions.create(
                     model=MODEL_NAME,
                     messages=[
-                        {"role": "system", "content": "너는 정책조정팀의 스마트 요약 어시스턴트야."},
+                        {"role": "system", "content": "너는 부산경제진흥원 정책조정팀의 스마트 요약 어시스턴트야."},
                         {"role": "user", "content": prompt}
                     ],
                     temperature=0.3,
                 )
                 summaries_by_group.setdefault(group, []).append(
-                    f"### 🎯📌 {title}\n🔗 {link}\n\n" + response.choices[0].message.content + "\n\n---\n"
+                    f"### 🎯 {title}\n🔗 {link}\n\n" + response.choices[0].message.content + "\n\n---\n"
                 )
 
             except Exception as e:

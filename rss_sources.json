@@ -12,7 +12,7 @@
       "https://www.busan.go.kr/nbtnewsBU.rss",
       "https://www.busan.go.kr/news/ArticleRSS.do"
     ],
-    "산하기관": [
+    "공공기관/기타": [
         "https://kosis.kr/rss/notice_rss.jsp",
         "https://kosis.kr/rss/trend_rss.jsp",
         "https://kosis.kr/rss/kosis_100_rss.jsp"
