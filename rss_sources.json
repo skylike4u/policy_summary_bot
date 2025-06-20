@@ -1,17 +1,11 @@
 {
     "중앙정부": [
       "https://www.korea.kr/rss/policy.xml",
-      "https://www.korea.kr/rss/ebriefing.xml",
-      "https://www.korea.kr/rss/pressrelease.xml",
       "https://www.korea.kr/rss/dept_msit.xml",
       "https://www.korea.kr/rss/dept_mois.xml",
-      "https://www.korea.kr/rss/dept_mcst.xml",
       "https://www.korea.kr/rss/dept_motie.xml",
       "https://www.korea.kr/rss/dept_moel.xml",
-      "https://www.korea.kr/rss/dept_molit.xml",
-      "https://www.korea.kr/rss/dept_mof.xml",
-      "https://www.korea.kr/rss/dept_mss.xml",
-      "https://rss.blog.naver.com/hellopolicy.xml"
+      "https://www.korea.kr/rss/dept_mss.xml"
     ],
     "부산광역시": [
       "https://rss.blog.naver.com/cooolbusan.xml", 
@@ -21,8 +15,6 @@
       "https://rss.blog.naver.com/btp_n.xml"
     ],
     "공공기관/기타": [
-        "https://kosis.kr/rss/notice_rss.jsp",
-        "https://politepol.com/fd/TVL0ujipN2XN.xml",
         "https://rss.blog.naver.com/busanto1115.xml"
     ]
   }

@@ -2,7 +2,6 @@ import markdown2
 import pdfkit
 import os
 from datetime import datetime
-import re
 
 # 0. wkhtmltopdf 경로 설정
 pdf_config = pdfkit.configuration(wkhtmltopdf=r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
@@ -13,7 +12,7 @@ md_file = f"policy_report_{today}.md"
 html_file = f"output/policy_report_{today}.html"
 pdf_file = f"output/policy_report_{today}.pdf"
 
-# 2. Markdown 파일 확인
+# 2. Markdown → HTML 변환
 if not os.path.exists(md_file):
     print(f"❌ {md_file} 파일이 없습니다. 우선 요약을 먼저 실행해주세요.")
     exit()
@@ -21,16 +20,14 @@ if not os.path.exists(md_file):
 with open(md_file, "r", encoding="utf-8") as f:
     md_text = f.read()
 
-# 3. 의미 없는 링크 제거 (링크 텍스트가 "기사", "링크", "링크 바로가기" 등일 때 제거)
-md_text = re.sub(r'\n?\[ *(?:기사|링크|링크 바로가기)? *\]\(https?://[^\s\)]+?\)', '', md_text, flags=re.IGNORECASE)
-
-# 4. Markdown → HTML 변환
+# 자동 링크 처리: autolink 사용
 html_body = markdown2.markdown(md_text, extras=["fenced-code-blocks", "autolink"])
 
-# 5. 순수 URL을 하이퍼링크로 변환 (이미 앵커 태그가 아닌 경우만)
-html_body = re.sub(r'(?<!href=")(https?://[^\s<]+)', r'<a href="\1" target="_blank">\1</a>', html_body)
+# 링크 텍스트를 클릭 가능한 앵커로 변환
+import re
+html_body = re.sub(r'(https?://[^\s<]+)', r'<a href="\1" target="_blank">\1</a>', html_body)
 
-# 6. HTML 템플릿 구성
+# HTML 템플릿 정의
 html_template = f"""
 <html>
 <head>
@@ -78,21 +75,23 @@ html_template = f"""
 </html>
 """
 
-# 7. HTML 저장
+# 3. HTML 저장
 os.makedirs("output", exist_ok=True)
 with open(html_file, "w", encoding="utf-8") as f:
     f.write(html_template)
 
-# 8. HTML → PDF 변환 옵션
+# 4. HTML → PDF 변환
+# PDFKit 옵션 설정
 options = {
     "enable-local-file-access": "",
     "disable-external-links": "",
-    "no-images": "",
+    "no-images": "",                 # 이미지 포함 안 함
     "disable-javascript": "",
     "quiet": ""
 }
 
-# 9. PDF 생성
 pdfkit.from_file(html_file, pdf_file, configuration=pdf_config, options=options)
+
+
 
 print(f"\n✅ 변환 완료!\n📄 HTML 파일: {html_file}\n📄 PDF 파일: {pdf_file}")
