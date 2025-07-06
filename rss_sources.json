@@ -10,11 +10,11 @@
     "부산광역시": [
       "https://rss.blog.naver.com/cooolbusan.xml", 
       "https://www.busan.go.kr/nbtnewsBU.rss",
-      "https://www.busan.go.kr/news/ArticleRSS.do",
-      "https://rss.blog.naver.com/bepa_sns.xml",
-      "https://rss.blog.naver.com/btp_n.xml"
+      "https://www.busan.go.kr/news/ArticleRSS.do"
     ],
     "공공기관/기타": [
-        "https://rss.blog.naver.com/busanto1115.xml"
+      "https://rss.blog.naver.com/busanto1115.xml",
+      "https://rss.blog.naver.com/bepa_sns.xml",
+      "https://rss.blog.naver.com/btp_n.xml"
     ]
   }
