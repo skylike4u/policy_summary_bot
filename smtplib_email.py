@@ -1,8 +1,8 @@
 import smtplib
 
 # 내 네이버 이메일 계정
-my_email = "skylike4u@naver.com"
-password = "choi2169"
+my_email = "#"
+password = "#"
 
 # 서비스 제공자마다 smtp 서버주소 상이 (parameter에 이메일 제공자마다 다른 SMTP주소 넣음)
 with smtplib.SMTP("smtp.naver.com", 587) as connection:
