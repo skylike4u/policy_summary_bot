@@ -35,11 +35,11 @@ MODEL_NAME = "gpt-3.5-turbo"  # 필요 시, gpt-4 선택
 for group, urls in rss_urls_by_group.items():
     # 🔖 변경사항② : 부산광역시의 기사수(MAX_ENTRIES)를 상향 조정
     if group == "부산광역시":
-        MAX_ENTRIES = 15
+        MAX_ENTRIES = 20  # 당초 MAX_ENTRIES = 15
     else:
-        MAX_ENTRIES = 10 if MODEL_NAME == "gpt-4" else 6
+        MAX_ENTRIES = 10 if MODEL_NAME == "gpt-4" else 10  # 당초 else 6
 
-    MAX_SNIPPET_CHARS = 500 if MODEL_NAME == "gpt-4" else 300
+    MAX_SNIPPET_CHARS = 500 if MODEL_NAME == "gpt-4" else 400  # 당초 else 300
 
     for rss_url in urls:
         feed = feedparser.parse(rss_url)
@@ -153,7 +153,7 @@ date_title = today.strftime("%Y.%m.%d")
 output_file = f"policy_report_{today.strftime('%Y-%m-%d')}.md"
 
 with open(output_file, "w", encoding="utf-8") as f:
-    f.write(f"# 🗂️ 부산경제진흥원 정책조정팀 정책 리포트\n")
+    f.write(f"# 🗂️ 부산경제진흥원 정책조정팀 정책기사 리포트\n")
     f.write(f"**기준일자: {date_title} ({today.strftime('%A')})**\n\n")
     f.write("---\n\n")
 
