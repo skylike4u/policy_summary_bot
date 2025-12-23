@@ -35,11 +35,11 @@ MODEL_NAME = "gpt-3.5-turbo"  # 필요 시, gpt-4 선택
 for group, urls in rss_urls_by_group.items():
     # 🔖 변경사항② : 부산광역시의 기사수(MAX_ENTRIES)를 상향 조정
     if group == "부산광역시":
-        MAX_ENTRIES = 20  # 당초 MAX_ENTRIES = 15
+        MAX_ENTRIES = 30  # 당초 25에서 상향향
     else:
-        MAX_ENTRIES = 10 if MODEL_NAME == "gpt-4" else 10  # 당초 else 6
+        MAX_ENTRIES = 15 if MODEL_NAME == "gpt-4" else 12  # 당초 10에서 상향
 
-    MAX_SNIPPET_CHARS = 500 if MODEL_NAME == "gpt-4" else 400  # 당초 else 300
+    MAX_SNIPPET_CHARS = 600 if MODEL_NAME == "gpt-4" else 400  # 당초 500에서 상향
 
     for rss_url in urls:
         feed = feedparser.parse(rss_url)
